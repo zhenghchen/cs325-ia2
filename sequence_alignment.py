@@ -1,11 +1,34 @@
-def read_costs() -> None:
+def read_costs(cost_path) -> dict[str, dict[str, int]]:
+    # reads the cost_path and puts it into a array of strings
+    with open(cost_path, "r") as f:
+        lines = []
+        for line in f:
+            line = line.strip() 
+            if line != "":
+                lines.append(line)
 
-    #TODO Implement a data structure to keep track of costs from input file
+    # takes lines and makes it a 2d array of char
+    rows = []
+    for line in lines:
+        parts = line.split(",")
+        cleaned = []
+        for token in parts:
+            cleaned.append(token.strip())
+        rows.append(cleaned)
 
 
+    col_syms = rows[0][1:]
+    cost = {}
 
+    # create the hashmap
+    for row in rows[1:]:  
+        row_symbol = row[0]  
+        cost[row_symbol] = {}
+        values = row[1:]      
+        for i in range(len(col_syms)):
+            cost[row_symbol][col_syms[i]] = int(values[i])
 
-    return
+    return cost
 
 
 
