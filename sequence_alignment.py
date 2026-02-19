@@ -46,16 +46,8 @@ def sadp(costs: dict, string1: str, n: int, string2: str, m: int) -> int:
 
     for i in range(1, n+1):
         for j in range(1, m+1):
-            # Base case
-            if i == 0:
-
-                s[i][j] = costs['-'][string2[j]] + s[i][j-1]
             
-            elif j == 0:
-                s[i][j] = costs[string1[i]]['-'] + s[i-1][j]
-
-            else:
-                s[i][j] = min(s[i-1][j-1] + costs[string1[i]][string2[j]], s[i-1][j] + costs['-'][string2[j]], s[i][j-1] + costs[string1[i]]['-'])
+            s[i][j] = min(s[i-1][j-1] + costs[string1[i-1]][string2[j-1]], s[i-1][j] + costs['-'][string2[j-1]], s[i][j-1] + costs[string1[i-1]]['-'])
 
 
 
