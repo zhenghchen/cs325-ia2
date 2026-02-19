@@ -60,7 +60,12 @@ def sadp(costs: dict, string1: str, string2: str) -> int:
 
 def main() -> None:
 
-    print("hello daniel")
+    costs = read_costs("imp2cost.txt")
+    str1 = "AAATGTGTGTGTTCCCCAACGATGTCTCTAGAAGACGAACATCCC"
+    str2 = "ATGGAAACGTGAACCTAACTAACACATATGGATCCGACTGACGTTCTCTGATGTAGCCT"
+    min_cost = sadp(costs, str1, str2)
+
+    print(min_cost)
     
 if __name__ == "__main__":
     main()
