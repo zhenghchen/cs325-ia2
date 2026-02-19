@@ -36,16 +36,16 @@ def sadp(costs: dict, string1: str, n: int, string2: str, m: int) -> int:
 
     #TODO Implement a dynamic programming solution to get the two aligned strings and the minimum cost
 
-    s: list[list[int]] = []
+    s: list[list[int]] = [[0 for _ in range(m+1)] for _ in range(n+1)]
 
-    for i in range(n):
-        for j in range(m):
+    for i in range(n+1):
+        for j in range(m+1):
             # Base case
             if i == 0 or j == 0:
                 s[i][j] = costs[string1[i]][string2[j]]
 
-
-            s[i][j] = min(s[i-1][j-1] + costs[string1[i]][string2[j]], s[i-1][j] + costs['-'][string2[j]], s[i][j-1] + costs[string1[i]]['-'])
+            else:
+                s[i][j] = min(s[i-1][j-1] + costs[string1[i]][string2[j]], s[i-1][j] + costs['-'][string2[j]], s[i][j-1] + costs[string1[i]]['-'])
 
 
 
