@@ -32,10 +32,13 @@ def read_costs(cost_path) -> dict[str, dict[str, int]]:
 
 
 
-def sadp(costs: dict, string1: str, n: int, string2: str, m: int) -> int:
+def sadp(costs: dict, string1: str, string2: str) -> int:
 
     #TODO Implement a dynamic programming solution to get the two aligned strings and the minimum cost
 
+    n = len(string1)
+    m = len(string2)
+    
     s: list[list[int]] = [[0 for _ in range(m+1)] for _ in range(n+1)]
 
     s[0][0] = 0
