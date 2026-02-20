@@ -84,9 +84,11 @@ def main() -> None:
     costs = read_costs("imp2cost.txt")
     str1 = "AAATGTGTGTGTTCCCCAACGATGTCTCTAGAAGACGAACATCCC"
     str2 = "ATGGAAACGTGAACCTAACTAACACATATGGATCCGACTGACGTTCTCTGATGTAGCCT"
-    min_cost = sadp(costs, str1, str2)
+    aligned1, aligned2, min_cost = sadp(costs, str1, str2)
 
     print(min_cost)
+    print(aligned1)
+    print(aligned2)
     
 if __name__ == "__main__":
     main()
