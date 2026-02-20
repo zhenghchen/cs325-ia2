@@ -121,8 +121,8 @@ def output(filename: str, lines: list[tuple[str, str, int]]) -> None:
 
 def main() -> None:
 
-    costs = read_costs("imp2cost.txt")
-    inputs = read_input(sys.argv[1])
+    costs = read_costs(sys.argv[1])
+    inputs = read_input(sys.argv[2])
 
     tuplist = []
     for input in inputs:
@@ -130,7 +130,7 @@ def main() -> None:
         tuplist.append(tup)
     
 
-    output("output.txt", tuplist)
+    output(sys.argv[3], tuplist)
     
 if __name__ == "__main__":
     main()
