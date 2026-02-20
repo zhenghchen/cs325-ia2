@@ -52,10 +52,31 @@ def sadp(costs: dict, string1: str, string2: str) -> int:
             
             s[i][j] = min(s[i-1][j-1] + costs[string1[i-1]][string2[j-1]], s[i-1][j] + costs[string1[i-1]]['-'], s[i][j-1] + costs['-'][string2[j-1]])
 
+    # Traceback
+    aligned1 = ""
+    aligned2 = ""
+    i, j = n, m
+        
+    while i > 0 or j > 0:
+        if i > 0 and j > 0 and s[i][j] == s[i-1][j-1] + costs[string1[i-1]][string2[j-1]]:
+            # diagonal: match or substitute
+            aligned1 = string1[i-1] + aligned1
+            aligned2 = string2[j-1] + aligned2
+            i -= 1
+            j -= 1
+        elif i > 0 and s[i][j] == s[i-1][j] + costs[string1[i-1]]['-']:
+            # gap in string2
+            aligned1 = string1[i-1] + aligned1
+            aligned2 = '-' + aligned2
+            i -= 1
+        else:
+            # gap in string1
+            aligned1 = '-' + aligned1
+            aligned2 = string2[j-1] + aligned2
+            j -= 1
 
-
-    min_num = s[n][m]
-    return min_num
+    return aligned1, aligned2, s[n][m]
+    
 
 
 def main() -> None:
