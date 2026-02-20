@@ -4,3 +4,7 @@ Hello!
 How to run our program:
 
 python sequence_alignment.py < cost table > < input file name > < output file name >
+
+
+This will take the cost table and input file and output a correct alignment of all sets of strings as
+well as the minimum cost in the same format as the provided output file.
