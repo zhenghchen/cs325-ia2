@@ -1,0 +1,6 @@
+Hello!
+
+
+How to run our program:
+
+python sequence_alignment.py < cost table > < input file name > < output file name >
